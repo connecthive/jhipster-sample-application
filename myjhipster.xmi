@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<jdl:JdlDomainModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdl="http://www.github.io/jhipster/jdl/JDL">
+  <features xsi:type="jdl:JdlEntity" name="Foo">
+    <fields name="toto">
+      <type xsi:type="jdl:JdlStringFieldType"/>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="Bar"/>
+  <features xsi:type="jdl:JdlRelationships">
+    <relationships>
+      <source entity="//@features.0">
+        <role name="bar" required="true"/>
+      </source>
+      <target entity="//@features.1"/>
+    </relationships>
+  </features>
+</jdl:JdlDomainModel>

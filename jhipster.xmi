@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="ASCII"?>
+<jdl:JdlDomainModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdl="http://www.github.io/jhipster/jdl/JDL">
+  <features xsi:type="jdl:JdlEntity" name="Region">
+    <fields name="regionName">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="Country">
+    <fields name="countryName">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="Location">
+    <fields name="streetAddress">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="postalCode">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="city">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="stateProvince">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="Department">
+    <fields name="departmentName">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+        <validators required="true"/>
+      </type>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="Task">
+    <fields name="title">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="description">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="Employee">
+    <fields name="firstName">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="lastName">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="email">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="phoneNumber">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="hireDate">
+      <type xsi:type="jdl:JdlDateFieldType" element="Instant"/>
+    </fields>
+    <fields name="salary">
+      <type xsi:type="jdl:JdlNumericFieldType" element="BigDecimal"/>
+    </fields>
+    <fields name="commissionPct">
+      <type xsi:type="jdl:JdlNumericFieldType" element="Long"/>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="Job">
+    <fields name="jobTitle">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="minSalary">
+      <type xsi:type="jdl:JdlNumericFieldType" element="Long"/>
+    </fields>
+    <fields name="maxSalary">
+      <type xsi:type="jdl:JdlNumericFieldType" element="Long"/>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="JobHistory">
+    <fields name="startDate">
+      <type xsi:type="jdl:JdlDateFieldType" element="Instant"/>
+    </fields>
+    <fields name="endDate">
+      <type xsi:type="jdl:JdlDateFieldType" element="Instant"/>
+    </fields>
+    <fields name="language">
+      <type xsi:type="jdl:JdlEnumFieldType" element="//@features.8"/>
+    </fields>
+  </features>
+  <features xsi:type="jdl:JdlEnum" name="Language">
+    <values>FRENCH</values>
+    <values>ENGLISH</values>
+    <values>SPANISH</values>
+  </features>
+  <features xsi:type="jdl:JdlRelationships" cardinality="OneToOne">
+    <relationships>
+      <source entity="//@features.1">
+        <role name="region"/>
+      </source>
+      <target entity="//@features.0"/>
+    </relationships>
+  </features>
+  <features xsi:type="jdl:JdlRelationships" cardinality="OneToOne">
+    <relationships>
+      <source entity="//@features.2">
+        <role name="country"/>
+      </source>
+      <target entity="//@features.1"/>
+    </relationships>
+  </features>
+  <features xsi:type="jdl:JdlRelationships" cardinality="OneToOne">
+    <relationships>
+      <source entity="//@features.3">
+        <role name="location"/>
+      </source>
+      <target entity="//@features.2"/>
+    </relationships>
+  </features>
+  <features xsi:type="jdl:JdlRelationships" cardinality="ManyToMany">
+    <relationships>
+      <source entity="//@features.6">
+        <role name="task">
+          <displayField name="title"/>
+        </role>
+      </source>
+      <target entity="//@features.4">
+        <role name="job"/>
+      </target>
+    </relationships>
+  </features>
+  <features xsi:type="jdl:JdlRelationships">
+    <relationships>
+      <source entity="//@features.5">
+        <role name="job"/>
+      </source>
+      <target entity="//@features.6"/>
+    </relationships>
+    <relationships>
+      <source entity="//@features.3">
+        <role name="employee"/>
+      </source>
+      <target entity="//@features.5"/>
+    </relationships>
+  </features>
+  <features xsi:type="jdl:JdlRelationships" cardinality="ManyToOne">
+    <relationships>
+      <source entity="//@features.5">
+        <role name="manager"/>
+      </source>
+      <target entity="//@features.5"/>
+    </relationships>
+  </features>
+  <features xsi:type="jdl:JdlRelationships" cardinality="OneToOne">
+    <relationships>
+      <source entity="//@features.7">
+        <role name="job"/>
+      </source>
+      <target entity="//@features.6"/>
+    </relationships>
+    <relationships>
+      <source entity="//@features.7">
+        <role name="department"/>
+      </source>
+      <target entity="//@features.3"/>
+    </relationships>
+    <relationships>
+      <source entity="//@features.7">
+        <role name="employee"/>
+      </source>
+      <target entity="//@features.5"/>
+    </relationships>
+  </features>
+  <features xsi:type="jdl:JdlOption">
+    <setting paginateOption="true">
+      <includes>
+        <selection entities="//@features.7 //@features.5"/>
+      </includes>
+      <paginateType infiniteScroll="true"/>
+    </setting>
+  </features>
+  <features xsi:type="jdl:JdlOption">
+    <setting paginateOption="true">
+      <includes>
+        <selection entities="//@features.6"/>
+      </includes>
+      <paginateType pagination="true"/>
+    </setting>
+  </features>
+  <features xsi:type="jdl:JdlOption">
+    <setting serviceOption="true" serviceType="serviceImpl">
+      <includes>
+        <predicate all="true"/>
+      </includes>
+    </setting>
+    <excludes>
+      <selection entities="//@features.5 //@features.6"/>
+    </excludes>
+  </features>
+  <features xsi:type="jdl:JdlEntity" name="User">
+    <fields name="firstName">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="lastName">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="login">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="email">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="imageUrl">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+    <fields name="authorities">
+      <type xsi:type="jdl:JdlStringFieldType">
+        <element element="String"/>
+      </type>
+    </fields>
+  </features>
+</jdl:JdlDomainModel>
