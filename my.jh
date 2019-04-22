@@ -1,0 +1,11 @@
+
+entity Foo {
+     toto       String
+}
+
+entity Bar {
+}
+
+relationship OneToMany{
+     Foo{bar} to Bar
+}
